@@ -25,7 +25,11 @@ export class UsersService {
    * @param userId string
    */
   async findOneById(userId: string) {
-    return await this.userRepository.findOneById(userId);
+    const user = await this.userRepository.findOneById(userId);
+
+    delete user.getPassword;
+
+    return user;
   }
 
   /**

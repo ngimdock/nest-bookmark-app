@@ -5,7 +5,6 @@ import { UserRepository } from 'src/domain/nodes/user/user.service';
 import { UserModule } from 'src/domain/nodes/user/user.module';
 
 @Module({
-  imports: [],
   controllers: [UsersController],
   providers: [UsersService, UserRepository],
 })

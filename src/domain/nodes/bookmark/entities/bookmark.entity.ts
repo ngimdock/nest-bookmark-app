@@ -3,53 +3,53 @@ export type BookmarkData = {
   title: string;
   url: string;
   description?: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: number;
+  updatedAt: number;
 };
 
 export class Bookmark {
-  private _id: string;
-  private _title: string;
-  private _url: string;
-  private _description?: string;
-  private _createdAt: Date;
-  private _updatedAt: Date;
+  private id: string;
+  private title: string;
+  private url: string;
+  private description?: string;
+  private createdAt: number;
+  private updatedAt: number;
 
   constructor(data: BookmarkData) {
     this.initialize(data);
   }
 
   initialize(data: BookmarkData) {
-    this._id = data.id;
-    this._title = data.title;
-    this._url = data.url;
-    this._description = data.description;
-    this._createdAt = data.createdAt;
-    this._updatedAt = data.updatedAt;
+    this.id = data.id;
+    this.title = data.title;
+    this.url = data.url;
+    this.description = data.description;
+    this.createdAt = data.createdAt;
+    this.updatedAt = data.updatedAt;
   }
 
   //getterns
   getId(): string {
-    return this._id;
+    return this.id;
   }
 
   getTitle(): string {
-    return this._title;
+    return this.title;
   }
 
   getUrl(): string {
-    return this._url;
+    return this.url;
   }
 
   getDescription(): string | undefined {
-    return this._description;
+    return this.description;
   }
 
-  getCreatedAt(): Date {
-    return this._createdAt;
+  getCreatedAt(): number {
+    return this.createdAt;
   }
 
-  getUpdatedAt(): Date {
-    return this._updatedAt;
+  getUpdatedAt(): number {
+    return this.updatedAt;
   }
 }
