@@ -7,6 +7,10 @@ import { CreateBookmarkDto } from './dto/create-bookmark.dto';
 export class BookmarkService {
   constructor(private readonly bookmarkRepository: BookmarkRepository) {}
 
+  async findAll() {
+    return this.bookmarkRepository.findAll();
+  }
+
   async create(createBookmarkDto: CreateBookmarkDto) {
     return this.bookmarkRepository.create({
       ...createBookmarkDto,
@@ -14,5 +18,9 @@ export class BookmarkService {
       createdAt: Date.now(),
       updateAt: Date.now(),
     });
+  }
+
+  async delete(bookmarkId: string) {
+    return this.bookmarkRepository.delete(bookmarkId);
   }
 }

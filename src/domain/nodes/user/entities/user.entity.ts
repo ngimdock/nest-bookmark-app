@@ -37,14 +37,18 @@ export class User {
 
   getData() {
     return {
-      id: this.id,
-      name: this.name,
-      email: this.email,
-      password: this.password,
-      phoneNumber: this.phoneNumber,
-      createdAt: this.createdAt,
-      updatedAt: this.updatedAt,
+      id: this.getId,
+      name: this.getName,
+      email: this.getEmail,
+      password: this.getPassword,
+      phoneNumber: this.getPhoneNumber,
+      createdAt: this.getCreatedAt,
+      updatedAt: this.getUpdatedAt,
     };
+  }
+
+  deleteProperty(property: string) {
+    delete this[property];
   }
 
   // getters
@@ -61,7 +65,7 @@ export class User {
     return this.email;
   }
 
-  getPassword(): string {
+  getPassword(): string | undefined {
     return this.password;
   }
 

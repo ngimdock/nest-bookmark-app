@@ -18,6 +18,8 @@ export class UserRepository {
     try {
       const result = await query.matchNode('user', 'User').return('user').run();
 
+      console.log({ result: JSON.stringify(result) });
+
       return result.map((user) => new User(user['user'].properties));
     } catch (err) {
       throw new HttpException(err, 500);
@@ -41,9 +43,10 @@ export class UserRepository {
     if (!result.length)
       throw new NotFoundException(`User with id ${userId} not found`);
 
-    const userData = result[0]['user'].properties;
+    const { password, ...userDataWithoutPassword } =
+      result[0]['user'].properties;
 
-    return new User({ ...userData, password: undefined });
+    return new User(userDataWithoutPassword);
   }
 
   async checkUserExist(userId: string): Promise<boolean> {
@@ -102,8 +105,6 @@ export class UserRepository {
         .delete('user')
         .return('user')
         .run();
-
-      console.log({ result });
 
       return true;
     } catch (err) {
