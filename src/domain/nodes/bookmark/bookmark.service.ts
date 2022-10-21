@@ -89,6 +89,8 @@ export class BookmarkRepository {
         .return(BookmarkRepository.BOOKMARK)
         .run();
 
+      console.log({ result: JSON.stringify(result) });
+
       if (!result.length) throw new HttpException('Some thing went wrong', 500);
 
       const bookmarkData = result[0][BookmarkRepository.BOOKMARK].properties;
